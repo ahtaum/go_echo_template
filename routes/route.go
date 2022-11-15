@@ -9,10 +9,11 @@ import (
 func Init() *echo.Echo {
 	e := echo.New()
 
-	e.GET("/", User.GetUsers)
-	e.POST("/add", User.StoreUser)
-	e.PUT("/update", User.UpdateUser)
-	e.DELETE("/delete", User.DeleteUser)
+	g := e.Group("/apiV1")
+	g.GET("/", User.GetUsers)
+	g.POST("/add", User.StoreUser)
+	g.PUT("/update", User.UpdateUser)
+	g.DELETE("/delete", User.DeleteUser)
 
 	return e
 }
